@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,14 +59,18 @@ public class ConsoleCommandExecutor implements CommandExecutor, TabCompleter {
             return Collections.emptyList();
         }
 
-        // Простое таб-комплит по известным командам сервера (очень базовый)
+        // Базовый таб-комплит по известным командам
         if (args.length == 1) {
             String partial = args[0].toLowerCase();
-            return Bukkit.getCommandMap().getKnownCommands().keySet().stream()
-                    .filter(cmd -> cmd.toLowerCase().startsWith(partial))
-                    .sorted()
-                    .limit(50)
-                    .collect(Collectors.toList());
+            try {
+                return Bukkit.getCommandMap().getKnownCommands().keySet().stream()
+                        .filter(cmd -> cmd.toLowerCase().startsWith(partial))
+                        .sorted()
+                        .limit(40)
+                        .collect(Collectors.toList());
+            } catch (Exception e) {
+                return Collections.emptyList();
+            }
         }
 
         return Collections.emptyList();
