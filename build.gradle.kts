@@ -1,6 +1,6 @@
 plugins {
     java
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.19" // adjust if needed
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.24"
 }
 
 group = "ru.kekih"
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("26.3-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("26.3.build.+")
 }
 
 tasks {
@@ -28,7 +28,7 @@ tasks {
     processResources {
         val props = mapOf(
             "version" to version,
-            "description" to description
+            "description" to project.description
         )
         inputs.properties(props)
         filesMatching("plugin.yml") {
@@ -37,5 +37,8 @@ tasks {
     }
     jar {
         archiveBaseName.set("ConsoleCommand")
+    }
+    assemble {
+        // For pure API plugins reobf is optional, but keep it simple
     }
 }
