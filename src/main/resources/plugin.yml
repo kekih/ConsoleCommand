@@ -1,0 +1,18 @@
+name: ConsoleCommand
+version: '${version}'
+main: ru.kekih.consolecommand.ConsoleCommandPlugin
+api-version: '26.3'
+author: kekih
+description: '${description}'
+
+commands:
+  console:
+    description: Выполнить команду от имени консоли сервера
+    usage: /console <команда>
+    permission: console.use
+    permission-message: "§cУ вас нет прав на использование этой команды!"
+
+permissions:
+  console.use:
+    description: Позволяет выполнять команды через /console от имени консоли
+    default: op
