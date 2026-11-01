@@ -28,27 +28,32 @@
 lp user <ник> permission set console.use true
 ```
 
+## Скачать готовый JAR
+
+1. Зайди во вкладку **Actions** → последний успешный билд → **Artifacts** → скачай `ConsoleCommand`
+2. Или создай **Release** на GitHub — JAR автоматически прикрепится к релизу.
+
 ## Установка
 
-1. Скачай готовый `.jar` из [Releases](https://github.com/kekih/ConsoleCommand/releases) (когда появится) **или** собери сам.
+1. Скачай `.jar`
 2. Положи в папку `plugins/`
 3. Перезапусти сервер.
 
-## Сборка
+## Сборка локально
 
 Требуется **Java 25**.
 
 ```bash
-./gradlew build
+gradle build
 ```
 
 Готовый плагин будет в `build/libs/ConsoleCommand-1.0.0.jar`
 
 ## Требования
 
-- Paper / Purpur / Folia 26.3+
+- Paper / Purpur 26.3+
 - Java 25+
 
-## Автор
+## CI/CD
 
-Сделано для удобства администрирования серверов.
+GitHub Actions автоматически собирает плагин при каждом пуше в `main` и при создании релиза.

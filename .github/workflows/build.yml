@@ -21,13 +21,12 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
-          cache: gradle
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+        run: gradle build --no-daemon
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -36,7 +35,7 @@ jobs:
           path: build/libs/ConsoleCommand-*.jar
           if-no-files-found: error
 
-      - name: Upload to Release
+      - name: Upload JAR to GitHub Release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
